@@ -8,139 +8,23 @@ Copyright (C) 2014 ARM Ltd and ARM Germany GmbH. All rights reserved.
 License Information: Johnson Lau, freeiot.org, LIC=0VRHL-08D0K-JN3A8-3XSHN-N90ME-V2GH9
  
 Tool Versions:
-Toolchain:       MDK-ARM Professional  Version: 5.12.0.0
-Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
+Toolchain:       MDK-ARM Professional  Version: <unknown>
+Toolchain Path:  C:\Keil_v5\ARM\ARMCC\bin\
 C Compiler:      Armcc.exe V5.05 (build 41)
 Assembler:       Armasm.exe V5.05 (build 41)
 Linker/Locator:  ArmLink.exe V5.05 (build 41)
 Library Manager: ArmAr.exe V5.05 (build 41)
 Hex Converter:   FromElf.exe V5.05 (build 41)
-CPU DLL:         SARMCM3.DLL V5.12.0.0
-Dialog DLL:      DARMSTM.DLL V1.65.0.0
-Target DLL:      UL2CM3.DLL V1.153.0.0
-Dialog DLL:      TARMSTM.DLL V1.64.0.0
+CPU DLL:         SARMCM3.DLL
+Dialog DLL:      DARMSTM.DLL
+    Target DLL: UL2CM3.DLL
+Dialog DLL:      TARMSTM.DLL
  
 <h2>Project:</h2>
 C:\app\gokit_sandbox\MDK_Project\Project.uvprojx
 Project File Date:  11/23/2014
 
 <h2>Output:</h2>
-Rebuild target 'GoKit'
-assembling startup_stm32f10x_md.s...
-compiling core_cm3.c...
-compiling stm32f10x_gpio.c...
-compiling stm32f10x_rcc.c...
-compiling stm32f10x_usart.c...
-compiling misc.c...
-compiling stm32f10x_tim.c...
-compiling stm32f10x_exti.c...
-compiling main.c...
-compiling stm32f10x_it.c...
-compiling system_stm32f10x.c...
-compiling delay.c...
-compiling hal_uart.c...
-compiling hal_temp_hum.c...
-compiling hal_infrared.c...
-compiling sa_gpio.c...
-compiling hal_motor.c...
-compiling hal_rgb_led.c...
-compiling hal_key.c...
-compiling uart.c...
-compiling key.c...
-linking...
-Program Size: Code=11628 RO-data=268 RW-data=60 ZI-data=1636  
-FromELF: creating hex file...
-After Build - User command #1: fromelf --bin .\output\gokit.axf  --output .\output\gokit.bin
-".\output\gokit.axf" - 0 Error(s), 0 Warning(s).
-
-<h2>Collection of Component include folders:</h2>
-  C:\app\gokit_sandbox\MDK_Project\RTE
-  C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
-
-<h2>Collection of Component Files used:</h2>
-Load "C:\\app\\gokit_sandbox\\MDK_Project\\output\\gokit.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
-Application running ...
 </pre>
 </body>
 </html>
-ut .\output\gokit.bin
-".\output\gokit.axf" - 0 Error(s), 3 Warning(s).
-
-<h2>Collection of Component include folders:</h2>
-  C:\app\gokit_sandbox\MDK_Project\RTE
-  C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
-
-<h2>Collection of Component Files used:</h2>
-arnings, 0 errors
-compiling hal_key.c...
-".\output\gokit.axf" - 5 Error(s), 4 Warning(s).
-
-<h2>Collection of Component include folders:</h2>
-  C:\app\gokit_sandbox\MDK_Project\RTE
-  C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
-
-<h2>Collection of Component Files used:</h2>
-Target not created.
-\stm32f10x_it.c(278): error:  #20: identifier "KEY_LONG" is undefined
-                          Key_Return = KEY_LONG | Key_Prev;               //返回长按后的值                
-..\user\stm32f10x_it.c(230): warning:  #550-D: variable "Key_Series" was set but never used
-      static uint8_t Key_Series  = FALSE;                             //标志连发开始  
-..\user\stm32f10x_it.c: 2 warnings, 12 errors
-".\output\gokit.axf" - 12 Error(s), 2 Warning(s).
-
-<h2>Collection of Component include folders:</h2>
-  C:\app\gokit_sandbox\MDK_Project\RTE
-  C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
-
-<h2>Collection of Component Files used:</h2>
-Target not created.
-SN;
-..\User\Buz_Logic\key.c(60): error:  #20: identifier "SN" is undefined
-          m_m2w_setModule.head_part.sn = ++SN;
-..\User\Buz_Logic\key.c(61): warning:  #223-D: function "CheckSum" declared implicitly
-          m_m2w_setModule.sum = CheckSum((uint8_t *)&m_m2w_setModule, sizeof(m2w_setModule));
-..\User\Buz_Logic\key.c(61): error:  #20: identifier "m2w_setModule" is undefined
-          m_m2w_setModule.sum = CheckSum((uint8_t *)&m_m2w_setModule, sizeof(m2w_setModule));
-..\User\Buz_Logic\key.c(62): warning:  #223-D: function "SendToUart" declared implicitly
-          SendToUart((uint8_t *)&m_m2w_setModule, sizeof(m2w_setModule), 1);
-..\User\Buz_Logic\key.c(72): error:  #20: identifier "m_m2w_mcuStatus" is undefined
-              m_m2w_mcuStatus.status_r.alert_byte = 0x01;     //alert 1
-..\User\Buz_Logic\key.c(73): warning:  #223-D: function "LED_RGB_Control" declared implicitly
-              LED_RGB_Control(50,0,0);    
-..\User\Buz_Logic\key.c(78): error:  #20: identifier "m_m2w_mcuStatus" is undefined
-              m_m2w_mcuStatus.status_r.fault_byte = 0x03;     //fault 1 and 2
-..\User\Buz_Logic\key.c(79): warning:  #223-D: function "LED_RGB_Control" declared implicitly
-              LED_RGB_Control(0,50,0);    
-..\User\Buz_Logic\key.c(88): warning:  #223-D: function "ReportStatus" declared implicitly
-          ReportStatus(REPORT_STATUS);
-..\User\Buz_Logic\key.c(88): error:  #20: identifier "REPORT_STATUS" is undefined
-          ReportStatus(REPORT_STATUS);
-..\User\Buz_Logic\key.c(89): error:  #20: identifier "m_m2w_mcuStatus" is undefined
-          m_m2w_mcuStatus.status_r.alert_byte = 0x00;         //clean the alert
-..\User\Buz_Logic\key.c(99): error:  #20: identifier "m_m2w_mcuStatus" is undefined
-              m_m2w_mcuStatus.status_r.alert_byte = 0x02;     //alert 2
-..\User\Buz_Logic\key.c(100): warning:  #223-D: function "LED_RGB_Control" declared implicitly
-              LED_RGB_Control(50,0,0);    
-..\User\Buz_Logic\key.c(105): error:  #20: identifier "m_m2w_mcuStatus" is undefined
-              m_m2w_mcuStatus.status_r.fault_byte = 0x0C;     //fault 3 and 4
-..\User\Buz_Logic\key.c(106): warning:  #223-D: function "LED_RGB_Control" declared implicitly
-              LED_RGB_Control(0,50,0);    
-..\User\Buz_Logic\key.c(115): warning:  #223-D: function "ReportStatus" declared implicitly
-          ReportStatus(REPORT_STATUS);
-..\User\Buz_Logic\key.c(115): error:  #20: identifier "REPORT_STATUS" is undefined
-          ReportStatus(REPORT_STATUS);
-..\User\Buz_Logic\key.c(116): error:  #20: identifier "m_m2w_mcuStatus" is undefined
-          m_m2w_mcuStatus.status_r.alert_byte = 0x00;         //clean the alert
-..\User\Buz_Logic\key.c: 13 warnings, 19 errors
-compiling hal_key.c...
-".\output\gokit.axf" - 21 Error(s), 13 Warning(s).
-
-<h2>Collection of Component include folders:</h2>
-  C:\app\gokit_sandbox\MDK_Project\RTE
-  C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include
-
-<h2>Collection of Component Files used:</h2>
-Target not created.
