@@ -1,6 +1,5 @@
 .\output\hal_key.o: ..\User\Hal_Driver\hal_key.c
 .\output\hal_key.o: ..\User\Hal_Driver\hal_key.h
-.\output\hal_key.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\hal_key.o: ..\Lib\cmsis\stm32f10x.h
 .\output\hal_key.o: ..\Lib\cmsis\core_cm3.h
 .\output\hal_key.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
@@ -13,4 +12,3 @@
 .\output\hal_key.o: ..\Lib\inc\stm32f10x_tim.h
 .\output\hal_key.o: ..\Lib\inc\stm32f10x_usart.h
 .\output\hal_key.o: ..\Lib\inc\misc.h
-.\output\hal_key.o: ..\user\delay.h

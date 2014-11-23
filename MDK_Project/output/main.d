@@ -17,4 +17,10 @@
 .\output\main.o: ..\user\sys.h
 .\output\main.o: ..\User\Hal_Driver\GPIO\sa_gpio.h
 .\output\main.o: ..\User\Hal_Driver\hal_rgb_led.h
+.\output\main.o: ..\User\Hal_Driver\hal_temp_hum.h
 .\output\main.o: ..\user\delay.h
+.\output\main.o: ..\user\sys.h
+.\output\main.o: ..\User\Hal_Driver\hal_infrared.h
+.\output\main.o: ..\User\Hal_Driver\hal_key.h
+.\output\main.o: ..\User\Buz_Logic\key.h
+.\output\main.o: ..\User\Buz_Logic\uart.h

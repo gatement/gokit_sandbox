@@ -1,48 +1,36 @@
 /**
-  ******************************************************************************
-  * @file    Project/Template/stm32f10x_it.c 
-  * @author  MCD Application Team
-  * @version V3.1.2
-  * @date    09/28/2009
-  * @brief   Main Interrupt Service Routines.
-  *          This file provides template for all exceptions handler and 
-  *          peripherals interrupt service routine.
-  ******************************************************************************
-  * @copy
-  *
-  * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
-  * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
-  * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
-  * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
-  * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
-  * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
-  *
-  * <h2><center>&copy; COPYRIGHT 2009 STMicroelectronics</center></h2>
-  */ 
-    
+ ******************************************************************************
+ * @file    Project/Template/stm32f10x_it.c 
+ * @author  MCD Application Team
+ * @version V3.1.2
+ * @date    09/28/2009
+ * @brief   Main Interrupt Service Routines.
+ *          This file provides template for all exceptions handler and 
+ *          peripherals interrupt service routine.
+ ******************************************************************************
+ * @copy
+ *
+ * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
+ * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
+ * TIME. AS A RESULT, STMICROELECTRONICS SHALL NOT BE HELD LIABLE FOR ANY
+ * DIRECT, INDIRECT OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
+ * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
+ * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
+ *
+ * <h2><center>&copy; COPYRIGHT 2009 STMicroelectronics</center></h2>
+ */ 
+
 #include <stm32f10x_it.h>
 #include "hal_uart.h"
-/*
 #include "hal_key.h"
-#include "delay.h"
-#include "protocol.h"
+#include "key.h"
 
-extern m2w_mcuStatus                            m_m2w_mcuStatus;
-extern uint8_t                                      uart_buf[]; 
-extern uint8_t                                      uart_Count;
-extern uint8_t                                      cmd_flag ;
-extern uint8_t                                      cmd_len ;
-extern uint8_t                                      wait_ack_time;
-extern uint8_t                                      check_status_time;
-extern uint8_t                                      report_status_idle_time;
-extern uint16_t                                     Key_Return;                                 //°´¼ü·µ»ØÖµ
-extern uint8_t                                      cmd_flag1, cmd_flag2;
+extern uint32_t   counter;
+extern uint16_t   Key_Return;
 
-extern uint8_t get_one_package;
-*/
 /** @addtogroup Template_Project
-  * @{
-  */
+ * @{
+ */
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -56,98 +44,98 @@ extern uint8_t get_one_package;
 /******************************************************************************/
 
 /**
-  * @brief   This function handles NMI exception.
-  * @param  None
-  * @retval None
-  */
+ * @brief   This function handles NMI exception.
+ * @param  None
+ * @retval None
+ */
 void NMI_Handler(void)
 {
 }
 
 /**
-  * @brief  This function handles Hard Fault exception.
-  * @param  None
-  * @retval None
-  */
+ * @brief  This function handles Hard Fault exception.
+ * @param  None
+ * @retval None
+ */
 void HardFault_Handler(void)
 {
-  /* Go to infinite loop when Hard Fault exception occurs */
-  while (1)
-  {
-  }
+    /* Go to infinite loop when Hard Fault exception occurs */
+    while (1)
+    {
+    }
 }
 
 /**
-  * @brief  This function handles Memory Manage exception.
-  * @param  None
-  * @retval None
-  */
+ * @brief  This function handles Memory Manage exception.
+ * @param  None
+ * @retval None
+ */
 void MemManage_Handler(void)
 {
-  /* Go to infinite loop when Memory Manage exception occurs */
-  while (1)
-  {
-  }
+    /* Go to infinite loop when Memory Manage exception occurs */
+    while (1)
+    {
+    }
 }
 
 /**
-  * @brief  This function handles Bus Fault exception.
-  * @param  None
-  * @retval None
-  */
+ * @brief  This function handles Bus Fault exception.
+ * @param  None
+ * @retval None
+ */
 void BusFault_Handler(void)
 {
-  /* Go to infinite loop when Bus Fault exception occurs */
-  while (1)
-  {
-  }
+    /* Go to infinite loop when Bus Fault exception occurs */
+    while (1)
+    {
+    }
 }
 
 /**
-  * @brief  This function handles Usage Fault exception.
-  * @param  None
-  * @retval None
-  */
+ * @brief  This function handles Usage Fault exception.
+ * @param  None
+ * @retval None
+ */
 void UsageFault_Handler(void)
 {
-  /* Go to infinite loop when Usage Fault exception occurs */
-  while (1)
-  {
-  }
+    /* Go to infinite loop when Usage Fault exception occurs */
+    while (1)
+    {
+    }
 }
 
 /**
-  * @brief  This function handles SVCall exception.
-  * @param  None
-  * @retval None
-  */
+ * @brief  This function handles SVCall exception.
+ * @param  None
+ * @retval None
+ */
 void SVC_Handler(void)
 {
 }
 
 /**
-  * @brief  This function handles Debug Monitor exception.
-  * @param  None
-  * @retval None
-  */
+ * @brief  This function handles Debug Monitor exception.
+ * @param  None
+ * @retval None
+ */
 void DebugMon_Handler(void)
 {
 }
 
 /**
-  * @brief  This function handles PendSVC exception.
-  * @param  None
-  * @retval None
-  */
+ * @brief  This function handles PendSVC exception.
+ * @param  None
+ * @retval None
+ */
 void PendSV_Handler(void)
 {
 }
 
 /**
-  * @brief  This function handles SysTick Handler.
-  * @param  None
-  * @retval None
-  */
+ * @brief  This function handles SysTick Handler.
+ * @param  None
+ * @retval None
+ */
 void SysTick_Handler(void)
 {
 }
@@ -162,156 +150,99 @@ void SysTick_Handler(void)
 void USART1_IRQHandler(void)
 {  
     uint8_t     value;
-    //short       i;
-    
-  if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
-  { 
+
+    if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
+    { 
         USART_ClearITPendingBit(USART1, USART_IT_RXNE);
         value = USART_ReceiveData(USART1);
 
         UART1_Send_DATA(value);
-    /*
-        if(get_one_package == 0)
-        {
-            if(cmd_flag1 ==0)
-            {
-                if(value == 0xff)
-                {   
-                        uart_Count = 0;                     
-                        uart_buf[uart_Count]=value;
-                        uart_Count++;   
-                        cmd_flag1 = 1;
-                }           
-                return ;
-            }
-            if(cmd_flag2 ==0)
-            {
-                if(cmd_flag2)
-                {
-                        uart_buf[uart_Count]=value;
-                        uart_Count++;
-                        if(uart_buf[1] == 0xff)
-                        {
-                            cmd_flag2 = 1;                          
-                        }   
-                        else
-                        {
-                            cmd_flag1 = 0;
-                        }
-                }
-                cmd_flag2 = 1;
-            }
-            uart_buf[uart_Count] = value;
-            if(uart_Count >=4 && uart_buf[uart_Count] == 0x55 && uart_buf[uart_Count-1] == 0xFF){}
-            else uart_Count++;
-            if(uart_Count == 0x04)
-            {
-                cmd_len = uart_buf[2]*256 +  uart_buf[3];                                                           
-            }
-            if(uart_Count ==  (cmd_len + 4))
-            {
-                get_one_package = 1;
-                cmd_flag1 = 0;
-            }                                                       
-        }       
-        */
-  } 
+    } 
 }
 
 /******************************************************************************/
-/*             KEY1 :³¤°´  RESET WIFI, KEY2 :¶Ì°´  ÅäÖÃWiFiÁª                 */
-/*             ¶¨Ê±Æ÷3ÖÐ¶Ï·þÎñ³ÌÐò                                            */
+/*                            handler key events                              */
 /******************************************************************************/
 void TIM3_IRQHandler(void)                  
 {
-    /*
-  static uint8_t Key_State   = 0;                                   //°´¼ü×´Ì¬     
-    static uint8_t Key_Prev    = 0;                                 //ÉÏÒ»´Î°´¼ü     
-    static uint16_t Key_Delay   = 0;                                //°´¼üÁ¬·¢Ê±¼ä     
-    static uint8_t Key_Series  = FALSE;                             //±êÖ¾Á¬·¢¿ªÊ¼  
-    
-    uint16_t Key_Press  = NO_KEY;                                   //°´¼üÖµ     
-        
-    if (TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)  //¼ì²éTIM3¸üÐÂÖÐ¶Ï·¢ÉúÓë·ñ
-    {
-        TIM_ClearITPendingBit(TIM3, TIM_IT_Update  );       //Çå³ýTIMx¸üÐÂÖÐ¶Ï±êÖ¾ 
-        wait_ack_time++;
-        check_status_time++;
-        report_status_idle_time++;
-            
-        Key_Press  =    Get_Key();  
+    static uint8_t  Key_State   = 0;                                //æŒ‰é”®çŠ¶æ€     
+    static uint8_t  Key_Prev    = 0;                                //ä¸Šä¸€æ¬¡æŒ‰é”®     
+    static uint16_t Key_Delay   = 0;                                //æŒ‰é”®è¿žå‘æ—¶é—´     
 
-        switch (Key_State)
+    uint8_t Key_Press = NO_KEY;                                     //æŒ‰é”®å€¼     
+
+    if(TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)               //æ£€æŸ¥TIM3æ›´æ–°ä¸­æ–­å‘ç”Ÿä¸Žå¦
+    {
+        TIM_ClearITPendingBit(TIM3, TIM_IT_Update);                 //æ¸…é™¤TIMxæ›´æ–°ä¸­æ–­æ ‡å¿— 
+
+        counter++;
+
+        Key_Press = Get_Key();  
+        switch(Key_State)
         {
             case 0:
                 if(Key_Press != NO_KEY)
                 {
-                    Key_State = 1;                                                          //×ªµ½°´¼üÈ·ÈÏ              
-                    Key_Prev  = Key_Press;                                          //±£´æ°´¼ü×´Ì¬
+                    Key_State = 1;                                   //è½¬åˆ°æŒ‰é”®ç¡®è®¤              
+                    Key_Prev  = Key_Press;                           //ä¿å­˜æŒ‰é”®çŠ¶æ€
                 }   
                 break;
             case 1:
-                if(Key_Press == Key_Prev)                                       //È·ÈÏºÍÉÏ´Î°´¼üÏàÍ¬
+                if(Key_Press == Key_Prev)                            //ç¡®è®¤å’Œä¸Šæ¬¡æŒ‰é”®ç›¸åŒ
                 {
-                    Key_State = 2;                                                          //ÅÐ¶Ï°´¼ü³¤°´                         
+                    Key_State = 2;                                   //åˆ¤æ–­æŒ‰é”®é•¿æŒ‰                         
                     Key_Return = KEY_DOWN | Key_Prev;
                 }   
-                else                                                                                    //°´¼üÌ§Æð,ÊÇ¶¶¶¯,²»ÏìÓ¦°´¼ü 
+                else                                                 //æŒ‰é”®æŠ¬èµ·,æ˜¯æŠ–åŠ¨,ä¸å“åº”æŒ‰é”® 
                 {
                     Key_State = 0;
                 }
                 break;
-                case 2:
-                if(Key_Press == NO_KEY )                                            //°´¼üÊÍ·ÅÁË 
+            case 2:
+                if(Key_Press == NO_KEY)                              //æŒ‰é”®é‡Šæ”¾äº† 
                 {
                     Key_State = 0;
                     Key_Delay = 0; 
-                    Key_Series  = FALSE;
-                    Key_Return  = KEY_UP | Key_Prev;                //·µ»Ø°´¼üÌ§ÆðÖµ
-                    break;
-                }   
-                if ( Key_Press ==Key_Prev )
+                    Key_Return  = KEY_UP | Key_Prev;                  //è¿”å›žæŒ‰é”®æŠ¬èµ·å€¼
+                }
+                if (Key_Press == Key_Prev)
                 {
                     Key_Delay++; 
-                    if (Key_Delay>KEY_SERIES_FLAG) 
+                    if(Key_Delay > LONG_KEY_TIMER) 
                     {               
                         Key_Delay  = 0;                  
-                        Key_Return = KEY_LONG | Key_Prev;               //·µ»Ø³¤°´ºóµÄÖµ                
-                        break; 
+                        Key_Return = KEY_LONG | Key_Prev;              //è¿”å›žé•¿æŒ‰åŽçš„å€¼                
                     }
                 }
                 break;
             default:
                 break;
-        }       
+        } 
     }
-    */
 } 
 
 void EXTI15_10_IRQHandler(void) 
 {
-    /*
-    EXTI->EMR &= (uint32_t)~(1<<1);                                     //ÆÁ±ÎÖÐ¶ÏÊÂ¼þ
+    EXTI->EMR &= (uint32_t)~(1<<1);                                     //å±è”½ä¸­æ–­äº‹ä»¶
 
-    while(EXTI_GetITStatus(EXTI_Line12)!= RESET ) 
+    while(EXTI_GetITStatus(EXTI_Line12) != RESET) 
     {       
         if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_12))
         {
-            m_m2w_mcuStatus.status_r.ir_status &= ~(1<<0);
+            printf("infrared: %i\n", 0);
         }
         else
         {       
-            m_m2w_mcuStatus.status_r.ir_status |= (1<<0);
-        }   
-    
+            printf("infrared: %i\n", 1);
+        }
+
         EXTI_ClearITPendingBit(EXTI_Line12);
-    }   
-    
-    EXTI->EMR |= (uint32_t)(1<<1);                                          //¿ªÆôÖÐ¶ÏÊÂ¼þ  
-    */
+    }
+
+    EXTI->EMR |= (uint32_t)(1<<1);                                      //å¼€å¯ä¸­æ–­äº‹ä»¶  
 }
 
 /**
-  * @}
-  */ 
+ * @}
+ */ 
 /******************* (C) COPYRIGHT 2009 STMicroelectronics *****END OF FILE****/

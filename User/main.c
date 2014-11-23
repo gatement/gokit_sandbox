@@ -2,7 +2,14 @@
 #include "hal_uart.h"
 #include "hal_motor.h"
 #include "hal_rgb_led.h"
+#include "hal_temp_hum.h"
+#include "hal_infrared.h"
+#include "hal_key.h"
 #include "delay.h"
+#include "key.h"
+#include "uart.h"
+
+uint32_t counter;
 
 int main(void)
 {
@@ -12,25 +19,24 @@ int main(void)
     // init peripheral
     UART_Configuration();
     delay_init();   
+    KEY_GPIO_Init();
+    TIM3_Int_Init(100,7199);
     Motor_Init();
     RGB_LED_Init();
-    //KEY_GPIO_Init();
-    //TIM3_Int_Init(100,7199);
-    //DHT11_Init();
+    DHT11_Init();
+    IR_Init();
+
+    counter = 0;
     
     while(1)
     {
-       	printf("a");
-       	printf("about:4\r\n");
-        delay_ms(1000);
-
-        //处理来自于串口的数据帧
-        //MessageHandle();
+        // handler uart msg
+        HandleMsg();
         
-        //处理来自于按键的事件
-        //KeyHandle();        
+        // handle key events
+        HandleKey();        
 
-        //检查系统最新状态
+        // send mcu status in interval
         //CheckStatus();  
     }               
 }
