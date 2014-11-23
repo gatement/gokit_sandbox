@@ -80,7 +80,7 @@
           <AfterMake>
             <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>0</RunUserProg2>
-            <UserProg1Name>fromelf --bin .\output\Project.axf  --output .\output\Project.bin</UserProg1Name>
+            <UserProg1Name>fromelf --bin .\output\gokit.axf  --output .\output\gokit.bin</UserProg1Name>
             <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F10X_MD</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Lib\inc;..\Lib\cmsis;..\user;..\Lib;..\User\Hal_Driver;..\User\Protocol;..\User\Hal_Driver\GPIO</IncludePath>
+              <IncludePath>..\Lib\inc;..\Lib\cmsis;..\user;..\Lib;..\User\Hal_Driver;..\User\Buz_Logic;..\User\Hal_Driver\GPIO</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -517,6 +517,21 @@
               <FileName>hal_key.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\Hal_Driver\hal_key.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>buz_logic</GroupName>
+          <Files>
+            <File>
+              <FileName>uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Buz_Logic\uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Buz_Logic\key.c</FilePath>
             </File>
           </Files>
         </Group>
