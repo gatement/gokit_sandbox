@@ -165,32 +165,32 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>protocol_ver</ItemText>
+          <ItemText>uart_buf</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>uart_buf</ItemText>
+          <ItemText>i</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>fault_status</ItemText>
+          <ItemText>counter</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>goboard_status</ItemText>
+          <ItemText>uart_buf[0]</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
           <WinNumber>1</WinNumber>
-          <ItemText>m_m2w_returnMcuInfo</ItemText>
+          <ItemText>uart_buf[1]</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>m_m2w_mcuStatus</ItemText>
+          <ItemText>uart_buf[2]</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>

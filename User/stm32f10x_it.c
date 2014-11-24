@@ -27,6 +27,8 @@
 
 extern uint32_t   counter;
 extern uint16_t   Key_Return;
+extern uint8_t    i; 
+extern uint8_t    uart_buf[256]; 
 
 /** @addtogroup Template_Project
  * @{
@@ -155,8 +157,9 @@ void USART1_IRQHandler(void)
     { 
         USART_ClearITPendingBit(USART1, USART_IT_RXNE);
         value = USART_ReceiveData(USART1);
-
-        UART1_Send_DATA(value);
+        uart_buf[i] = value;
+        i++;
+        //UART1_Send_DATA(value);
     } 
 }
 
@@ -168,7 +171,7 @@ void TIM3_IRQHandler(void)
     static uint8_t  Key_State   = 0;                                //按键状态     
     static uint8_t  Key_Prev    = 0;                                //上一次按键     
     static uint16_t Key_Delay   = 0;                                //按键连发时间     
-
+    
     uint8_t Key_Press = NO_KEY;                                     //按键值     
 
     if(TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)               //检查TIM3更新中断发生与否

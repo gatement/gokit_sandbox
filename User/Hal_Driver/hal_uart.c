@@ -9,8 +9,8 @@
 
 void RCC_Configuration(void)
 {
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_AFIO,ENABLE);
-    RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1,ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_AFIO, ENABLE);
+    RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
 }
 
 void UART_GPIO_Configuration(void)
@@ -34,7 +34,7 @@ void NVIC_Configuration(void)
     NVIC_SetVectorTable(NVIC_VectTab_FLASH, 0x0000); //将中断矢量放到Flash的0地址
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
 
-    NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn | USART2_IRQn;
+    NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
     NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
     NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;
     NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;

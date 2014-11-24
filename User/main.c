@@ -10,6 +10,8 @@
 #include "uart.h"
 
 uint32_t counter;
+uint8_t  i = 0;
+extern uint8_t  uart_buf[256]; 
 
 int main(void)
 {
@@ -30,8 +32,7 @@ int main(void)
     
     while(1)
     {
-        printf("b");
-        delay_ms(1000);
+        //printf("b");
 
         // handler uart msg
         HandleMsg();
