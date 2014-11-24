@@ -149,7 +149,7 @@ void SysTick_Handler(void)
 
 void USART1_IRQHandler(void)
 {  
-    uint8_t     value;
+    uint8_t value;
 
     if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
     { 

@@ -30,6 +30,9 @@ int main(void)
     
     while(1)
     {
+        printf("b");
+        delay_ms(1000);
+
         // handler uart msg
         HandleMsg();
         
