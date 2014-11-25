@@ -74,7 +74,7 @@ I (..\Lib\inc\stm32f10x_rcc.h)(0x54712F7C)
 I (..\Lib\inc\stm32f10x_tim.h)(0x54712F7C)
 I (..\Lib\inc\stm32f10x_usart.h)(0x54712F7C)
 I (..\Lib\inc\misc.h)(0x54712F7C)
-F (..\user\main.c)(0x5473CFD6)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Lib\inc -I..\Lib\cmsis -I..\user -I..\Lib -I..\User\Hal_Driver -I..\User\Buz_Logic -I..\User\Hal_Driver\GPIO-I C:\app\gokit_sandbox\MDK_Project\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
+F (..\user\main.c)(0x5474992A)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Lib\inc -I..\Lib\cmsis -I..\user -I..\Lib -I..\User\Hal_Driver -I..\User\Buz_Logic -I..\User\Hal_Driver\GPIO-I C:\app\gokit_sandbox\MDK_Project\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
 I (..\Lib\cmsis\stm32f10x.h)(0x54712F7C)
 I (..\Lib\cmsis\core_cm3.h)(0x54712F7C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54199D7A)
@@ -96,8 +96,10 @@ I (..\User\Hal_Driver\hal_temp_hum.h)(0x54719E61)
 I (..\user\delay.h)(0x5471522B)
 I (..\User\Hal_Driver\hal_infrared.h)(0x54716C07)
 I (..\User\Hal_Driver\hal_key.h)(0x5471B61D)
+I (..\User\Buz_Logic\protocol.h)(0x54749DDE)
 I (..\User\Buz_Logic\key.h)(0x5471C9A1)
-I (..\User\Buz_Logic\uart.h)(0x5471C999)
+I (..\User\Buz_Logic\uart.h)(0x54749ECE)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54199D7C)
 F (..\user\stm32f10x_it.c)(0x5473D58C)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Lib\inc -I..\Lib\cmsis -I..\user -I..\Lib -I..\User\Hal_Driver -I..\User\Buz_Logic -I..\User\Hal_Driver\GPIO-I C:\app\gokit_sandbox\MDK_Project\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD-o .\output\stm32f10x_it.o --omf_browse .\output\stm32f10x_it.crf --depend .\output\stm32f10x_it.d)
 I (..\user\stm32f10x_it.h)(0x54712F7C)
 I (..\Lib\cmsis\stm32f10x.h)(0x54712F7C)
@@ -242,10 +244,12 @@ I (..\Lib\inc\stm32f10x_rcc.h)(0x54712F7C)
 I (..\Lib\inc\stm32f10x_tim.h)(0x54712F7C)
 I (..\Lib\inc\stm32f10x_usart.h)(0x54712F7C)
 I (..\Lib\inc\misc.h)(0x54712F7C)
-F (..\User\Buz_Logic\uart.c)(0x5473D2D2)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Lib\inc -I..\Lib\cmsis -I..\user -I..\Lib -I..\User\Hal_Driver -I..\User\Buz_Logic -I..\User\Hal_Driver\GPIO-I C:\app\gokit_sandbox\MDK_Project\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD-o .\output\uart.o --omf_browse .\output\uart.crf --depend .\output\uart.d)
+F (..\User\Buz_Logic\uart.c)(0x54749F90)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Lib\inc -I..\Lib\cmsis -I..\user -I..\Lib -I..\User\Hal_Driver -I..\User\Buz_Logic -I..\User\Hal_Driver\GPIO-I C:\app\gokit_sandbox\MDK_Project\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD-o .\output\uart.o --omf_browse .\output\uart.crf --depend .\output\uart.d)
+I (..\User\Buz_Logic\uart.h)(0x54749ECE)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54199D7C)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54199D7A)
-I (..\User\Buz_Logic\uart.h)(0x5471C999)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x54199D7C)
+I (..\User\Buz_Logic\protocol.h)(0x54749DDE)
 F (..\User\Buz_Logic\key.c)(0x5473CD00)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Lib\inc -I..\Lib\cmsis -I..\user -I..\Lib -I..\User\Hal_Driver -I..\User\Buz_Logic -I..\User\Hal_Driver\GPIO-I C:\app\gokit_sandbox\MDK_Project\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD-o .\output\key_1.o --omf_browse .\output\key_1.crf --depend .\output\key_1.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54199D7C)
 I (..\User\Buz_Logic\key.h)(0x5471C9A1)
@@ -263,3 +267,7 @@ I (..\Lib\inc\stm32f10x_usart.h)(0x54712F7C)
 I (..\Lib\inc\misc.h)(0x54712F7C)
 I (..\User\Hal_Driver\hal_rgb_led.h)(0x547169C3)
 I (..\user\delay.h)(0x5471522B)
+F (..\User\Buz_Logic\protocol.c)(0x54749D7B)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I..\Lib\inc -I..\Lib\cmsis -I..\user -I..\Lib -I..\User\Hal_Driver -I..\User\Buz_Logic -I..\User\Hal_Driver\GPIO-I C:\app\gokit_sandbox\MDK_Project\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.5\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -DSTM32F10X_MD-o .\output\protocol.o --omf_browse .\output\protocol.crf --depend .\output\protocol.d)
+I (..\User\Buz_Logic\protocol.h)(0x54749DDE)
+I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x54199D7C)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54199D7A)

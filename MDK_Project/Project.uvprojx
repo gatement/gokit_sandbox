@@ -533,6 +533,11 @@
               <FileType>1</FileType>
               <FilePath>..\User\Buz_Logic\key.c</FilePath>
             </File>
+            <File>
+              <FileName>protocol.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Buz_Logic\protocol.c</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

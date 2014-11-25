@@ -1,0 +1,13 @@
+wifi send
+-------------------
+get_mcu_info_w2m: ffff 0005 01 01 0000 07
+w2m:
+ping_w2m:
+wifi_status_w2m:
+
+mcu send
+-------------------
+m2w:
+config_m2w:
+reset_m2w:
+

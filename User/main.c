@@ -6,6 +6,7 @@
 #include "hal_infrared.h"
 #include "hal_key.h"
 #include "delay.h"
+#include "protocol.h"
 #include "key.h"
 #include "uart.h"
 
@@ -48,6 +49,7 @@ int main(void)
     while(1)
     {
         //printf("b");
+        //delay_ms(1000);
 
         // handler uart msg
         HandleMsg();

@@ -20,6 +20,7 @@
 ".\output\hal_key.o"
 ".\output\uart.o"
 ".\output\key_1.o"
+".\output\protocol.o"
 --strict --scatter ".\output\gokit.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
