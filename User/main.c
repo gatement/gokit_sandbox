@@ -9,9 +9,24 @@
 #include "key.h"
 #include "uart.h"
 
-uint32_t counter;
-uint8_t  i = 0;
-extern uint8_t  uart_buf[256]; 
+// main vars
+uint32_t main_counter;
+
+// uart vars
+extern uint16_t   uart_buf_index; 
+extern uint8_t    uart_msg_sn; 
+extern uint8_t    uart_got_one_msg; 
+
+void McuStatusInit()
+{
+    // main vars
+    main_counter = 0;
+
+    // uart vars
+    uart_buf_index = 0;
+    uart_msg_sn = 0;
+    uart_got_one_msg = 0;
+}
 
 int main(void)
 {
@@ -28,8 +43,8 @@ int main(void)
     DHT11_Init();
     IR_Init();
 
-    counter = 0;
-    
+    McuStatusInit();
+
     while(1)
     {
         //printf("b");

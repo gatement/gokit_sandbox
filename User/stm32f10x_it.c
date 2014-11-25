@@ -25,10 +25,17 @@
 #include "hal_key.h"
 #include "key.h"
 
-extern uint32_t   counter;
-extern uint16_t   Key_Return;
-extern uint8_t    i; 
-extern uint8_t    uart_buf[256]; 
+// main vars
+extern uint32_t   main_counter;
+
+// key vars
+extern uint16_t   key_return;
+
+// uart vars
+extern uint8_t    uart_buf[2048]; 
+extern uint16_t   uart_buf_index; 
+extern uint8_t    uart_msg_len; 
+extern uint8_t    uart_got_one_msg; 
 
 /** @addtogroup Template_Project
  * @{
@@ -157,9 +164,45 @@ void USART1_IRQHandler(void)
     { 
         USART_ClearITPendingBit(USART1, USART_IT_RXNE);
         value = USART_ReceiveData(USART1);
-        uart_buf[i] = value;
-        i++;
-        //UART1_Send_DATA(value);
+        if(!uart_got_one_msg)
+        {
+            // message must be started with 0xffff, or else ignore it
+            if(uart_buf_index <= 1 && value != 0xff)
+            {
+                uart_buf_index = 0;
+            }
+            else
+            {
+                uart_buf[uart_buf_index] = value;
+
+                if(uart_buf_index >= 3 && uart_buf[uart_buf_index-1] == 0xff && uart_buf[uart_buf_index] == 0x55)
+                {
+                    // the sender adds 0x55 after each 0xff except for the header(the very first 2 bytes), so remove it
+                }
+                else if(uart_buf_index >= 3 && uart_buf[uart_buf_index-1] == 0xff && uart_buf[uart_buf_index] == 0xff)
+                {
+                    // if received 0xffff, it is the header(the very first two bytes)
+                    uart_buf_index = 2;
+                }
+                else
+                {
+                    // advance the index
+                    uart_buf_index ++;
+                }
+
+                // calculate msg len
+                if(uart_buf_index == 0x04)
+                {
+                    uart_msg_len = uart_buf[2]*256 + uart_buf[3] + 4; 
+                }
+
+                // is one msg received?
+                if(uart_buf_index == uart_msg_len)
+                {
+                    uart_got_one_msg = 1;
+                }
+            }
+        }
     } 
 }
 
@@ -168,53 +211,53 @@ void USART1_IRQHandler(void)
 /******************************************************************************/
 void TIM3_IRQHandler(void)                  
 {
-    static uint8_t  Key_State   = 0;                                //按键状态     
-    static uint8_t  Key_Prev    = 0;                                //上一次按键     
-    static uint16_t Key_Delay   = 0;                                //按键连发时间     
+    static uint8_t  key_state   = 0;                                //按键状态     
+    static uint8_t  key_prev    = 0;                                //上一次按键     
+    static uint16_t key_delay   = 0;                                //按键连发时间     
     
-    uint8_t Key_Press = NO_KEY;                                     //按键值     
+    uint8_t key_press = NO_KEY;                                     //按键值     
 
     if(TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)               //检查TIM3更新中断发生与否
     {
         TIM_ClearITPendingBit(TIM3, TIM_IT_Update);                 //清除TIMx更新中断标志 
 
-        counter++;
+        main_counter ++;
 
-        Key_Press = Get_Key();  
-        switch(Key_State)
+        key_press = Get_Key();  
+        switch(key_state)
         {
             case 0:
-                if(Key_Press != NO_KEY)
+                if(key_press != NO_KEY)
                 {
-                    Key_State = 1;                                   //转到按键确认              
-                    Key_Prev  = Key_Press;                           //保存按键状态
+                    key_state = 1;                                   //转到按键确认              
+                    key_prev  = key_press;                           //保存按键状态
                 }   
                 break;
             case 1:
-                if(Key_Press == Key_Prev)                            //确认和上次按键相同
+                if(key_press == key_prev)                            //确认和上次按键相同
                 {
-                    Key_State = 2;                                   //判断按键长按                         
-                    Key_Return = KEY_DOWN | Key_Prev;
+                    key_state = 2;                                   //判断按键长按                         
+                    key_return = KEY_DOWN | key_prev;
                 }   
                 else                                                 //按键抬起,是抖动,不响应按键 
                 {
-                    Key_State = 0;
+                    key_state = 0;
                 }
                 break;
             case 2:
-                if(Key_Press == NO_KEY)                              //按键释放了 
+                if(key_press == NO_KEY)                              //按键释放了 
                 {
-                    Key_State = 0;
-                    Key_Delay = 0; 
-                    Key_Return  = KEY_UP | Key_Prev;                  //返回按键抬起值
+                    key_state = 0;
+                    key_delay = 0; 
+                    key_return  = KEY_UP | key_prev;                  //返回按键抬起值
                 }
-                if (Key_Press == Key_Prev)
+                if (key_press == key_prev)
                 {
-                    Key_Delay++; 
-                    if(Key_Delay > LONG_KEY_TIMER) 
+                    key_delay++; 
+                    if(key_delay > LONG_KEY_TIMER) 
                     {               
-                        Key_Delay  = 0;                  
-                        Key_Return = KEY_LONG | Key_Prev;              //返回长按后的值                
+                        key_delay  = 0;                  
+                        key_return = KEY_LONG | key_prev;              //返回长按后的值                
                     }
                 }
                 break;
