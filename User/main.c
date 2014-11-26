@@ -12,6 +12,7 @@
 
 // main vars
 uint32_t main_counter;
+protocol_cmd_error_t               m_protocol_cmd_error;
 
 // uart vars
 extern uint16_t   uart_buf_index; 
@@ -22,6 +23,12 @@ void McuStatusInit()
 {
     // main vars
     main_counter = 0;
+
+    memset(&m_protocol_cmd_error, 0, sizeof(protocol_cmd_error_t));
+    m_protocol_cmd_error.header.head[0] = 0xFF;
+    m_protocol_cmd_error.header.head[1] = 0xFF;
+    m_protocol_cmd_error.header.len = ExchangeBytes(sizeof(protocol_cmd_error_t) - 4);
+    m_protocol_cmd_error.header.cmd = CMD_MODULE_CMD_ERROR_ACK;
 
     // uart vars
     uart_buf_index = 0;

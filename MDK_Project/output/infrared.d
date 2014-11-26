@@ -1,0 +1,17 @@
+.\output\infrared.o: ..\User\Buz_Logic\infrared.c
+.\output\infrared.o: ..\User\Buz_Logic\infrared.h
+.\output\infrared.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\output\infrared.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\infrared.o: ..\User\Buz_Logic\protocol.h
+.\output\infrared.o: ..\User\Hal_Driver\hal_uart.h
+.\output\infrared.o: ..\Lib\cmsis\stm32f10x.h
+.\output\infrared.o: ..\Lib\cmsis\core_cm3.h
+.\output\infrared.o: ..\Lib\cmsis\system_stm32f10x.h
+.\output\infrared.o: ..\user\stm32f10x_conf.h
+.\output\infrared.o: ..\Lib\inc\stm32f10x_exti.h
+.\output\infrared.o: ..\Lib\cmsis\stm32f10x.h
+.\output\infrared.o: ..\Lib\inc\stm32f10x_gpio.h
+.\output\infrared.o: ..\Lib\inc\stm32f10x_rcc.h
+.\output\infrared.o: ..\Lib\inc\stm32f10x_tim.h
+.\output\infrared.o: ..\Lib\inc\stm32f10x_usart.h
+.\output\infrared.o: ..\Lib\inc\misc.h

@@ -21,6 +21,7 @@
 ".\output\uart.o"
 ".\output\key_1.o"
 ".\output\protocol.o"
+".\output\infrared.o"
 --strict --scatter ".\output\gokit.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

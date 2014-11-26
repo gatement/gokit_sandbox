@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include "hal_uart.h"
 
 // cmd
 #define     CMD_GET_MCU_INFO                      0x01
@@ -43,9 +44,8 @@
 #define     PRODUCT_KEY                           "6f3074fe43894547a4f1314bd7e3ae0b"
 #define     BINDABLE_TIMEOUT                      60 
 
-#define     APPENDING_BYTE                        0x55 
-
 typedef struct _protocol_header_t                 protocol_header_t;
+typedef struct _protocol_cmd_error_t              protocol_cmd_error_t;
 
 __packed struct _protocol_header_t
 {
@@ -56,6 +56,14 @@ __packed struct _protocol_header_t
     uint8_t                         flags[2];
 };
 
+__packed struct _protocol_cmd_error_t
+{
+    protocol_header_t               header;
+    uint8_t                         error;
+    uint8_t                         sum;    
+};
+
+short ExchangeBytes(short value);
 uint8_t CheckSum(uint8_t *buf, int packLen);
 void SendToUart(uint8_t *buf, uint16_t packLen, uint8_t ack);
 void SendErrorAck(uint8_t error_no, uint8_t sn);

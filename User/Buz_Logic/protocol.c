@@ -1,5 +1,29 @@
 #include "protocol.h"
 
+extern protocol_cmd_error_t               m_protocol_cmd_error;
+
+/*******************************************************************************
+* Function Name  : ExchangeBytes
+* Description    : Simulate htons() or ntohs()
+* Input          : short int
+* Output         : None
+* Return         : The short int after exchaged
+* Attention      : None
+*******************************************************************************/
+short ExchangeBytes(short value)
+{
+    short       tmp_value;
+    uint8_t     *index1, *index2;
+    
+    index1 = (uint8_t *)&tmp_value;
+    index2 = (uint8_t *)&value;
+    
+    *index1 = *(index2 + 1);
+    *(index1+1) = *index2;
+    
+    return tmp_value;
+}
+
 /*******************************************************************************
 * Function Name  : CheckSum
 * Description    : Calculate checksum
@@ -31,11 +55,11 @@ uint8_t CheckSum(uint8_t *buf, int packLen)
 *******************************************************************************/
 void SendErrorAck(uint8_t error_no, uint8_t sn)
 {
-    m_pro_errorCmd.head_part.sn = sn;
-    m_pro_errorCmd.error = error_no;
-    m_pro_errorCmd.sum = CheckSum((uint8_t *)&m_pro_errorCmd, sizeof(pro_errorCmd));
+    m_protocol_cmd_error.header.sn = sn;
+    m_protocol_cmd_error.error = error_no;
+    m_protocol_cmd_error.sum = CheckSum((uint8_t *)&m_protocol_cmd_error, sizeof(protocol_cmd_error_t));
     
-    SendToUart((uint8_t *)&m_pro_errorCmd, sizeof(pro_errorCmd), 0);        
+    SendToUart((uint8_t *)&m_protocol_cmd_error, sizeof(protocol_cmd_error_t), 0);
 }
 
 /*******************************************************************************
@@ -49,21 +73,21 @@ void SendErrorAck(uint8_t error_no, uint8_t sn)
 void SendToUart(uint8_t *buf, uint16_t packLen, uint8_t ack)
 {
     uint16_t            i;
-    int                 Send_num;
-    pro_headPart        send_headPart;  
-    pro_commonCmd       recv_commonCmd;
+    //int                 Send_num;
+    //pro_headPart        send_headPart;  
+    //pro_commonCmd       recv_commonCmd;
     
     for(i = 0; i < packLen; i++)
     {
         UART1_Send_DATA(buf[i]);
         // If data contains 0xFF(except the header), send 0x55 right after the 0xFF
-        if(i >= 2 && buf[i] == 0xFF) UART1_Send_DATA(APPENDING_BYTE);
+        if(i >= 2 && buf[i] == 0xFF) UART1_Send_DATA(0x55);
     }
     
     // If ack == 0, no need to wait for ack
     if(ack == 0) return;
-    
 
+    /*
     memcpy(&send_headPart, buf, sizeof(pro_headPart));
     memset(&recv_commonCmd, 0, sizeof(pro_commonCmd));
     
@@ -92,12 +116,14 @@ void SendToUart(uint8_t *buf, uint16_t packLen, uint8_t ack)
         }
         else 
         {
-                wait_ack_time = 0 ;
-              for(i=0;i<packLen;i++){
-                    UART1_Send_DATA(buf[i]);
-                    if(i >=2 && buf[i] == 0xFF) UART1_Send_DATA(m_55);
-                }
-                Send_num ++;        
+              wait_ack_time = 0 ;
+              for(i=0;i<packLen;i++)
+              {
+                   UART1_Send_DATA(buf[i]);
+                   if(i >=2 && buf[i] == 0xFF) UART1_Send_DATA(m_55);
+              }
+              Send_num ++;        
         }   
     }   
+    */
 }

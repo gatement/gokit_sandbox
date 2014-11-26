@@ -24,6 +24,7 @@
 #include "hal_uart.h"
 #include "hal_key.h"
 #include "key.h"
+#include "infrared.h"
 
 // main vars
 extern uint32_t   main_counter;
@@ -275,11 +276,11 @@ void EXTI15_10_IRQHandler(void)
     {       
         if(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_12))
         {
-            printf("infrared: %i\n", 0);
+            HandleIREvent(0);
         }
         else
         {       
-            printf("infrared: %i\n", 1);
+            HandleIREvent(1);
         }
 
         EXTI_ClearITPendingBit(EXTI_Line12);

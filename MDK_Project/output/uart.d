@@ -4,3 +4,15 @@
 .\output\uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\output\uart.o: ..\User\Buz_Logic\protocol.h
+.\output\uart.o: ..\User\Hal_Driver\hal_uart.h
+.\output\uart.o: ..\Lib\cmsis\stm32f10x.h
+.\output\uart.o: ..\Lib\cmsis\core_cm3.h
+.\output\uart.o: ..\Lib\cmsis\system_stm32f10x.h
+.\output\uart.o: ..\user\stm32f10x_conf.h
+.\output\uart.o: ..\Lib\inc\stm32f10x_exti.h
+.\output\uart.o: ..\Lib\cmsis\stm32f10x.h
+.\output\uart.o: ..\Lib\inc\stm32f10x_gpio.h
+.\output\uart.o: ..\Lib\inc\stm32f10x_rcc.h
+.\output\uart.o: ..\Lib\inc\stm32f10x_tim.h
+.\output\uart.o: ..\Lib\inc\stm32f10x_usart.h
+.\output\uart.o: ..\Lib\inc\misc.h
