@@ -1,9 +1,10 @@
-#ifndef _PROTOCOL_H
-#define _PROTOCOL_H
+#ifndef _GEN_PROTOCOL_H
+#define _GEN_PROTOCOL_H
 
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
+#include "delay.h"
 #include "hal_uart.h"
 
 // cmd
@@ -26,23 +27,25 @@
 #define     CMD_MODULE_CMD_ERROR_ACK              0x11
 #define     CMD_MCU_CMD_ERROR_ACK                 0x12
 
-// sub cmd
-#define     SUB_CMD_CONTROL_MCU                   0x01
-#define     SUB_CMD_QUERY_STATUS                  0x02
-#define     SUB_CMD_QUERY_STATUS_ACK              0x03
-#define     SUB_CMD_REPORT_STATUS                 0x04
-
 // error code
 #define     ERROR_CHECKSUM                        0x01
 #define     ERROR_CMD                             0x02
 #define     ERROR_OTHER                           0x03
+
+// resending
+#define     MAX_SENDING_TIMES                     3
+#define     SENDING_INTERVAL                      20 
+
+// onboarding method
+#define     CONFIG_METHOD_SOFTAP                  1 
+#define     CONFIG_METHOD_AIRLINK                 2
 
 // device info
 #define     GEN_PROTOCOL_VER                      "00000004"
 #define     BUZ_PROTOCOL_VER                      "00000002"
 #define     HARD_VER                              "GOKIT001"
 #define     SOFT_VER                              "00000001"
-#define     PRODUCT_KEY                           "6f3074fe43894547a4f1314bd7e3ae0b"
+#define     PRODUCT_KEY                           "c3896f0ac0504db6acea135477efb7db"
 #define     BINDABLE_TIMEOUT                      60
 
 typedef struct _protocol_header_t                     protocol_header_t;
@@ -51,12 +54,8 @@ typedef struct _protocol_cmd_error_t                  protocol_cmd_error_t;
 typedef struct _protocol_heartbeat_ack_t              protocol_heartbeat_ack_t;
 typedef struct _protocol_report_module_status_ack_t   protocol_report_module_status_ack_t;
 typedef struct _protocol_reboot_mcu_ack_t             protocol_reboot_mcu_ack_t;
-
-extern protocol_cmd_error_t                  m_protocol_cmd_error;
-extern protocol_get_mcu_info_ack_t           m_protocol_get_mcu_info_ack;
-extern protocol_heartbeat_ack_t              m_protocol_heartbeat_ack;
-extern protocol_report_module_status_ack_t   m_protocol_report_module_status_ack;
-extern protocol_reboot_mcu_ack_t             m_protocol_reboot_mcu_ack;
+typedef struct _protocol_reset_module_t               protocol_reset_module_t;
+typedef struct _protocol_set_module_work_mode         protocol_set_module_work_mode_t;
 
 __packed struct _protocol_header_t
 {
@@ -104,14 +103,30 @@ __packed struct _protocol_reboot_mcu_ack_t
     uint8_t                         sum;    
 };
 
+__packed struct _protocol_reset_module_t
+{
+    protocol_header_t               header;
+    uint8_t                         sum;    
+};
+
+__packed struct _protocol_set_module_work_mode
+{
+    protocol_header_t               header;
+    uint8_t                         config_method;    
+    uint8_t                         sum;    
+};
+
 short    ExchangeBytes(short value);
 uint8_t  CheckSum(uint8_t *buf, int packLen);
 void     SendToUart(uint8_t *buf, uint16_t packLen, uint8_t ack);
-
+void     GenProtocolInit(void);
+void     HandleRebootMcu(void);
 void     SendErrorAck(uint8_t error_no, uint8_t sn);
 void     SendGetMcuInfoAck(uint8_t sn);
 void     SendHeartbeatAck(uint8_t sn);
 void     SendReportModuleStatusAck(uint8_t sn);
 void     SendRebootMcuAck(uint8_t sn);
+void     SendResetModule(uint8_t sn);
+void     SendSetModuleWorkMode(uint8_t config_method, uint8_t sn);
 
-#endif /*_PROTOCOL_H*/
+#endif /*_GEN_PROTOCOL_H*/

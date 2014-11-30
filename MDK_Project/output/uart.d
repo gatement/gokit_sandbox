@@ -15,6 +15,14 @@
 .\output\uart.o: ..\Lib\inc\stm32f10x_tim.h
 .\output\uart.o: ..\Lib\inc\stm32f10x_usart.h
 .\output\uart.o: ..\Lib\inc\misc.h
-.\output\uart.o: ..\User\Buz_Logic\protocol.h
+.\output\uart.o: ..\User\Buz_Logic\gen_protocol.h
 .\output\uart.o: ..\User\Hal_Driver\hal_uart.h
+.\output\uart.o: ..\User\Buz_Logic\buz_protocol.h
+.\output\uart.o: ..\User\Hal_Driver\hal_key.h
 .\output\uart.o: ..\User\Hal_Driver\hal_rgb_led.h
+.\output\uart.o: ..\User\Hal_Driver\hal_motor.h
+.\output\uart.o: ..\user\sys.h
+.\output\uart.o: ..\User\Hal_Driver\GPIO\sa_gpio.h
+.\output\uart.o: ..\User\Hal_Driver\hal_temp_hum.h
+.\output\uart.o: ..\user\sys.h
+.\output\uart.o: ..\User\Hal_Driver\hal_infrared.h

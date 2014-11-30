@@ -5,9 +5,10 @@
 #include <stdint.h>
 #include <string.h>
 #include "delay.h"
-#include "protocol.h"
-#include "hal_rgb_led.h"
+#include "gen_protocol.h"
+#include "buz_protocol.h"
 
 void HandleMsg(void);
+void UartInit(void);
 
 #endif /*_UART_H*/

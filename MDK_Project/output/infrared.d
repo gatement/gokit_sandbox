@@ -2,9 +2,9 @@
 .\output\infrared.o: ..\User\Buz_Logic\infrared.h
 .\output\infrared.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\infrared.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\output\infrared.o: ..\User\Buz_Logic\protocol.h
+.\output\infrared.o: ..\User\Buz_Logic\gen_protocol.h
 .\output\infrared.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
-.\output\infrared.o: ..\User\Hal_Driver\hal_uart.h
+.\output\infrared.o: ..\user\delay.h
 .\output\infrared.o: ..\Lib\cmsis\stm32f10x.h
 .\output\infrared.o: ..\Lib\cmsis\core_cm3.h
 .\output\infrared.o: ..\Lib\cmsis\system_stm32f10x.h
@@ -16,3 +16,4 @@
 .\output\infrared.o: ..\Lib\inc\stm32f10x_tim.h
 .\output\infrared.o: ..\Lib\inc\stm32f10x_usart.h
 .\output\infrared.o: ..\Lib\inc\misc.h
+.\output\infrared.o: ..\User\Hal_Driver\hal_uart.h

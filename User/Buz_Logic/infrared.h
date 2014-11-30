@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
-#include "protocol.h"
+#include "gen_protocol.h"
 
 void HandleIREvent(uint8_t state);
 

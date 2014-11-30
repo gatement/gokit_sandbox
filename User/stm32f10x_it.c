@@ -37,6 +37,11 @@ extern uint8_t    uart_buf[2048];
 extern uint16_t   uart_buf_index;
 extern uint8_t    uart_msg_len;
 extern uint8_t    uart_got_one_msg;
+extern uint8_t    uart_wait_ack_time;
+
+// status report
+extern uint16_t   check_status_time;
+extern uint16_t   report_status_idle_time;
 
 /** @addtogroup Template_Project
  * @{
@@ -210,7 +215,7 @@ void USART1_IRQHandler(void)
 /******************************************************************************/
 /*                            handler key events                              */
 /******************************************************************************/
-void TIM3_IRQHandler(void)                  
+void TIM3_IRQHandler(void)
 {
     static uint8_t  key_state   = 0;                                //按键状态     
     static uint8_t  key_prev    = 0;                                //上一次按键     
@@ -218,11 +223,14 @@ void TIM3_IRQHandler(void)
     
     uint8_t key_press = NO_KEY;                                     //按键值     
 
+    // trigger every 10 milliseconds
     if(TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)               //检查TIM3更新中断发生与否
     {
         TIM_ClearITPendingBit(TIM3, TIM_IT_Update);                 //清除TIMx更新中断标志 
 
-        main_counter ++;
+        uart_wait_ack_time ++;
+        check_status_time ++;
+        report_status_idle_time ++;
 
         key_press = Get_Key();  
         switch(key_state)

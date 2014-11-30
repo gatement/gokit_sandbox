@@ -1,9 +1,11 @@
 #ifndef _KEY_H
 #define _KEY_H
 
+#include <stdio.h>
 #include "hal_key.h"
 #include "hal_rgb_led.h"
 #include "delay.h"
+#include "gen_protocol.h"
 
 #define  KEY_DOWN               0x0010
 #define  KEY_UP                 0x0020

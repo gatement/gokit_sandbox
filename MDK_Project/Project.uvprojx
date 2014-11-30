@@ -534,14 +534,19 @@
               <FilePath>..\User\Buz_Logic\key.c</FilePath>
             </File>
             <File>
-              <FileName>protocol.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\User\Buz_Logic\protocol.c</FilePath>
-            </File>
-            <File>
               <FileName>infrared.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\Buz_Logic\infrared.c</FilePath>
+            </File>
+            <File>
+              <FileName>buz_protocol.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Buz_Logic\buz_protocol.c</FilePath>
+            </File>
+            <File>
+              <FileName>gen_protocol.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\Buz_Logic\gen_protocol.c</FilePath>
             </File>
           </Files>
         </Group>

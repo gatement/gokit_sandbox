@@ -22,7 +22,8 @@
 .\output\main.o: ..\user\sys.h
 .\output\main.o: ..\User\Hal_Driver\hal_infrared.h
 .\output\main.o: ..\User\Hal_Driver\hal_key.h
-.\output\main.o: ..\User\Buz_Logic\protocol.h
+.\output\main.o: ..\User\Buz_Logic\gen_protocol.h
 .\output\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\output\main.o: ..\User\Buz_Logic\buz_protocol.h
 .\output\main.o: ..\User\Buz_Logic\key.h
 .\output\main.o: ..\User\Buz_Logic\uart.h

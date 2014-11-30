@@ -18,6 +18,6 @@
 .\output\stm32f10x_it.o: ..\User\Buz_Logic\key.h
 .\output\stm32f10x_it.o: ..\User\Hal_Driver\hal_rgb_led.h
 .\output\stm32f10x_it.o: ..\user\delay.h
-.\output\stm32f10x_it.o: ..\User\Buz_Logic\infrared.h
-.\output\stm32f10x_it.o: ..\User\Buz_Logic\protocol.h
+.\output\stm32f10x_it.o: ..\User\Buz_Logic\gen_protocol.h
 .\output\stm32f10x_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\output\stm32f10x_it.o: ..\User\Buz_Logic\infrared.h

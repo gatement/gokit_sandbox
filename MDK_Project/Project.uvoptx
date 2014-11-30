@@ -416,7 +416,7 @@
 
   <Group>
     <GroupName>driver</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -553,8 +553,8 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\User\Buz_Logic\protocol.c</PathWithFileName>
-      <FilenameWithoutPath>protocol.c</FilenameWithoutPath>
+      <PathWithFileName>..\User\Buz_Logic\infrared.c</PathWithFileName>
+      <FilenameWithoutPath>infrared.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -566,8 +566,21 @@
       <Focus>0</Focus>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\User\Buz_Logic\infrared.c</PathWithFileName>
-      <FilenameWithoutPath>infrared.c</FilenameWithoutPath>
+      <PathWithFileName>..\User\Buz_Logic\buz_protocol.c</PathWithFileName>
+      <FilenameWithoutPath>buz_protocol.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>5</GroupNumber>
+      <FileNumber>24</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <Focus>0</Focus>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\User\Buz_Logic\gen_protocol.c</PathWithFileName>
+      <FilenameWithoutPath>gen_protocol.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

@@ -1,6 +1,6 @@
 .\output\key_1.o: ..\User\Buz_Logic\key.c
-.\output\key_1.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\key_1.o: ..\User\Buz_Logic\key.h
+.\output\key_1.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\key_1.o: ..\User\Hal_Driver\hal_key.h
 .\output\key_1.o: ..\Lib\cmsis\stm32f10x.h
 .\output\key_1.o: ..\Lib\cmsis\core_cm3.h
@@ -16,3 +16,6 @@
 .\output\key_1.o: ..\Lib\inc\misc.h
 .\output\key_1.o: ..\User\Hal_Driver\hal_rgb_led.h
 .\output\key_1.o: ..\user\delay.h
+.\output\key_1.o: ..\User\Buz_Logic\gen_protocol.h
+.\output\key_1.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\output\key_1.o: ..\User\Hal_Driver\hal_uart.h

@@ -1,7 +1,8 @@
-#include <stdio.h>
 #include "key.h"
 
 uint16_t key_return = NO_KEY;
+
+extern uint8_t  uart_msg_sn;
 
 /*******************************************************************************
  * Function Name  : HandleKey
@@ -13,87 +14,38 @@ uint16_t key_return = NO_KEY;
  *******************************************************************************/
 void HandleKey(void)
 {
+    // long key1 pressure to reset module
     if(key_return & PRESS_KEY1)
     {
         if (key_return & KEY_LONG)
         {
-            printf("key 1 is long pressed\n");
+            LED_RGB_Control(0,0,0);
+            SendResetModule(uart_msg_sn++);
         }
         else if (key_return & KEY_DOWN)
         {
-            printf("key 1 is pressed down\n");
+            LED_RGB_Control(0,0,50);
         }
-        else
+        else // KEY_DOWN
         {
-            printf("key 1 is pressed up\n");
+            LED_RGB_Control(0,0,0);
         }
-
-        LED_RGB_Control(0,0,50);
-        LED_RGB_Control(0,0,0);
 
         key_return = 0;
     }
 
+    // press key2 to config module
     if(key_return & PRESS_KEY2)
     {
-        if (key_return & KEY_LONG)
+        if (key_return & KEY_DOWN)
         {
-            printf("key 2 is long pressed\n");
+            LED_RGB_Control(0,0,50);
         }
-        else if (key_return & KEY_DOWN)
+        else if (key_return & KEY_UP)
         {
-            printf("key 2 is pressed down\n");
+            LED_RGB_Control(0,0,0);
+            SendSetModuleWorkMode(CONFIG_METHOD_AIRLINK, uart_msg_sn++);
         }
-        else
-        {
-            printf("key 2 is pressed up\n");
-        }
-
-        LED_RGB_Control(0,0,50);
-        LED_RGB_Control(0,0,0);
-
-        key_return = 0;
-    }
-
-    if(key_return & PRESS_KEY3)
-    {
-        if (key_return & KEY_LONG)
-        {
-            printf("key 3 is long pressed\n");
-        }
-        else if (key_return & KEY_DOWN)
-        {
-            printf("key 3 is pressed down\n");
-        }
-        else
-        {
-            printf("key 3 is pressed up\n");
-        }
-
-        LED_RGB_Control(0,0,50);
-        LED_RGB_Control(0,0,0);
-
-        key_return = 0;
-    }
-
-
-    if(key_return & PRESS_KEY4)
-    {
-        if (key_return & KEY_LONG)
-        {
-            printf("key 4 is long pressed\n");
-        }
-        else if (key_return & KEY_DOWN)
-        {
-            printf("key 4 is pressed down\n");
-        }
-        else
-        {
-            printf("key 4 is pressed up\n");
-        }
-
-        LED_RGB_Control(0,0,50);
-        LED_RGB_Control(0,0,0);
 
         key_return = 0;
     }

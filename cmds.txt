@@ -1,7 +1,7 @@
 wifi send
 -------------------
 get_mcu_info_w2m:    ffff 0005 01 01 0000 07
-w2m:
+w2m:                 ffff 0006 03 01 0000 01 0b
 ping_w2m:            ffff 0005 07 01 0000 0d
 wifi_status_w2m:     ffff 0007 0d 01 0000 0001 16
 reboot_2m:           ffff 0005 0f 01 0000 15
@@ -12,3 +12,6 @@ m2w:
 config_m2w:
 reset_m2w:
 
+my mac
+-------------------
+C89346469F2A
