@@ -2,6 +2,7 @@
 .\output\protocol.o: ..\User\Buz_Logic\protocol.h
 .\output\protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\output\protocol.o: ..\User\Hal_Driver\hal_uart.h
 .\output\protocol.o: ..\Lib\cmsis\stm32f10x.h
 .\output\protocol.o: ..\Lib\cmsis\core_cm3.h

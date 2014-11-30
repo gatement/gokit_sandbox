@@ -12,7 +12,12 @@
 
 // main vars
 uint32_t main_counter;
-protocol_cmd_error_t               m_protocol_cmd_error;
+
+protocol_cmd_error_t                  m_protocol_cmd_error;
+protocol_get_mcu_info_ack_t           m_protocol_get_mcu_info_ack;
+protocol_heartbeat_ack_t              m_protocol_heartbeat_ack;
+protocol_report_module_status_ack_t   m_protocol_report_module_status_ack;
+protocol_reboot_mcu_ack_t             m_protocol_reboot_mcu_ack;
 
 // uart vars
 extern uint16_t   uart_buf_index; 
@@ -24,15 +29,50 @@ void McuStatusInit()
     // main vars
     main_counter = 0;
 
+    // m_protocol_get_mcu_info_ack
+    memset(&m_protocol_get_mcu_info_ack, 0, sizeof(protocol_get_mcu_info_ack_t));
+    m_protocol_get_mcu_info_ack.header.head[0] = 0xFF;
+    m_protocol_get_mcu_info_ack.header.head[1] = 0xFF;
+    m_protocol_get_mcu_info_ack.header.len = ExchangeBytes(sizeof(protocol_get_mcu_info_ack_t) - 4);
+    m_protocol_get_mcu_info_ack.header.cmd = CMD_GET_MCU_INFO_ACK;
+    memcpy(m_protocol_get_mcu_info_ack.gen_protocol_ver, GEN_PROTOCOL_VER, 8);
+    memcpy(m_protocol_get_mcu_info_ack.buz_protocol_ver, BUZ_PROTOCOL_VER, 8);
+    memcpy(m_protocol_get_mcu_info_ack.hard_ver, HARD_VER, 8);
+    memcpy(m_protocol_get_mcu_info_ack.soft_ver, SOFT_VER, 8);
+    memcpy(m_protocol_get_mcu_info_ack.product_key, PRODUCT_KEY, 32);
+    m_protocol_get_mcu_info_ack.bindable_time = ExchangeBytes(BINDABLE_TIMEOUT);
+
+    // m_protocol_cmd_error
     memset(&m_protocol_cmd_error, 0, sizeof(protocol_cmd_error_t));
     m_protocol_cmd_error.header.head[0] = 0xFF;
     m_protocol_cmd_error.header.head[1] = 0xFF;
     m_protocol_cmd_error.header.len = ExchangeBytes(sizeof(protocol_cmd_error_t) - 4);
     m_protocol_cmd_error.header.cmd = CMD_MODULE_CMD_ERROR_ACK;
 
+    // m_protocol_heartbeat_ack
+    memset(&m_protocol_heartbeat_ack, 0, sizeof(protocol_heartbeat_ack_t));
+    m_protocol_heartbeat_ack.header.head[0] = 0xFF;
+    m_protocol_heartbeat_ack.header.head[1] = 0xFF;
+    m_protocol_heartbeat_ack.header.len = ExchangeBytes(sizeof(protocol_heartbeat_ack_t) - 4);
+    m_protocol_heartbeat_ack.header.cmd = CMD_SEND_HEARTBEAT_ACK;
+
+    // m_protocol_report_module_status_ack
+    memset(&m_protocol_report_module_status_ack, 0, sizeof(protocol_report_module_status_ack_t));
+    m_protocol_report_module_status_ack.header.head[0] = 0xFF;
+    m_protocol_report_module_status_ack.header.head[1] = 0xFF;
+    m_protocol_report_module_status_ack.header.len = ExchangeBytes(sizeof(protocol_report_module_status_ack_t) - 4);
+    m_protocol_report_module_status_ack.header.cmd = CMD_REPORT_MODULE_STATUS_ACK;
+
+    // m_protocol_reboot_mcu_ack
+    memset(&m_protocol_reboot_mcu_ack, 0, sizeof(protocol_reboot_mcu_ack_t));
+    m_protocol_reboot_mcu_ack.header.head[0] = 0xFF;
+    m_protocol_reboot_mcu_ack.header.head[1] = 0xFF;
+    m_protocol_reboot_mcu_ack.header.len = ExchangeBytes(sizeof(protocol_reboot_mcu_ack_t) - 4);
+    m_protocol_reboot_mcu_ack.header.cmd = CMD_REBOOT_MCU_ACK;
+
     // uart vars
     uart_buf_index = 0;
-    uart_msg_sn = 0;
+    uart_msg_sn = 1;
     uart_got_one_msg = 0;
 }
 

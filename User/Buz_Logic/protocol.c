@@ -1,7 +1,5 @@
 #include "protocol.h"
 
-extern protocol_cmd_error_t               m_protocol_cmd_error;
-
 /*******************************************************************************
 * Function Name  : ExchangeBytes
 * Description    : Simulate htons() or ntohs()
@@ -48,7 +46,7 @@ uint8_t CheckSum(uint8_t *buf, int packLen)
 /*******************************************************************************
 * Function Name  : SendErrorAck
 * Description    : Send error ack for the request message
-* Input          : error_no -  the error code, sn -  the error message sn
+* Input          : error_no -  the error code, sn - the message sn
 * Output         : None
 * Return         : None
 * Attention      : None
@@ -60,6 +58,70 @@ void SendErrorAck(uint8_t error_no, uint8_t sn)
     m_protocol_cmd_error.sum = CheckSum((uint8_t *)&m_protocol_cmd_error, sizeof(protocol_cmd_error_t));
     
     SendToUart((uint8_t *)&m_protocol_cmd_error, sizeof(protocol_cmd_error_t), 0);
+}
+
+/*******************************************************************************
+* Function Name  : SendGetMcuInfoAck
+* Description    : Send MCU info back to module
+* Input          : sn - the message sn
+* Output         : None
+* Return         : None
+* Attention      : None
+*******************************************************************************/
+void SendGetMcuInfoAck(uint8_t sn)
+{
+    m_protocol_get_mcu_info_ack.header.sn = sn;
+    m_protocol_get_mcu_info_ack.sum = CheckSum((uint8_t *)&m_protocol_get_mcu_info_ack, sizeof(protocol_get_mcu_info_ack_t));
+    
+    SendToUart((uint8_t *)&m_protocol_get_mcu_info_ack, sizeof(protocol_get_mcu_info_ack_t), 0);
+}
+
+/*******************************************************************************
+* Function Name  : SendHeartbeatAck
+* Description    : Send heartbeat ack back to module
+* Input          : sn - the message sn
+* Output         : None
+* Return         : None
+* Attention      : None
+*******************************************************************************/
+void SendHeartbeatAck(uint8_t sn)
+{
+    m_protocol_heartbeat_ack.header.sn = sn;
+    m_protocol_heartbeat_ack.sum = CheckSum((uint8_t *)&m_protocol_heartbeat_ack, sizeof(protocol_heartbeat_ack_t));
+    
+    SendToUart((uint8_t *)&m_protocol_heartbeat_ack, sizeof(protocol_heartbeat_ack_t), 0);
+}
+
+/*******************************************************************************
+* Function Name  : SendHeartbeatAck
+* Description    : Send report-module-status ack back to module
+* Input          : sn - the message sn
+* Output         : None
+* Return         : None
+* Attention      : None
+*******************************************************************************/
+void SendReportModuleStatusAck(uint8_t sn)
+{
+    m_protocol_report_module_status_ack.header.sn = sn;
+    m_protocol_report_module_status_ack.sum = CheckSum((uint8_t *)&m_protocol_report_module_status_ack, sizeof(protocol_report_module_status_ack_t));
+    
+    SendToUart((uint8_t *)&m_protocol_report_module_status_ack, sizeof(protocol_report_module_status_ack_t), 0);
+}
+
+/*******************************************************************************
+* Function Name  : SendHeartbeatAck
+* Description    : Send report-module-status ack back to module
+* Input          : sn - the message sn
+* Output         : None
+* Return         : None
+* Attention      : None
+*******************************************************************************/
+void SendRebootMcuAck(uint8_t sn)
+{
+    m_protocol_reboot_mcu_ack.header.sn = sn;
+    m_protocol_reboot_mcu_ack.sum = CheckSum((uint8_t *)&m_protocol_reboot_mcu_ack, sizeof(protocol_reboot_mcu_ack_t));
+    
+    SendToUart((uint8_t *)&m_protocol_reboot_mcu_ack, sizeof(protocol_reboot_mcu_ack_t), 0);
 }
 
 /*******************************************************************************

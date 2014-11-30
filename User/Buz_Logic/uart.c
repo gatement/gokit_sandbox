@@ -1,10 +1,23 @@
 #include "uart.h"
 
-uint8_t    uart_buf[1024]; 
+uint8_t    uart_buf[256];    // if the longest msg is bigger than this buffer, please just enlarge the buffer
 uint16_t   uart_buf_index; 
-uint16_t   uart_msg_len; 
-uint8_t    uart_msg_sn; 
-uint8_t    uart_got_one_msg; 
+uint16_t   uart_msg_len;     // the receiving msg total len
+uint8_t    uart_msg_sn;      // the next sn which is used to send msg
+uint8_t    uart_got_one_msg; // bool, got one msg or not
+
+void HandleModuleStatus(uint16_t status)
+{
+    uint8_t rssi = (status >> 6) & 0x07;
+    printf("wifi status: 0x%x, RSSI: 0x%x\n", status, rssi);
+    LED_RGB_Control(0, rssi*32, 0); // use the green light to indicate wifi RSSI
+}
+
+void HandleRebootMcu()
+{
+    delay_ms(600);
+    NVIC_SystemReset();
+}
 
 /*******************************************************************************
  * Function Name  : HandleMsg
@@ -31,31 +44,37 @@ void HandleMsg(void)
         // is checksum failed, return invalid_msg_ack
         if(CheckSum(uart_buf, msg_size) != uart_buf[msg_size - 1])
         {
-            SendErrorAck(ERROR_CHECKSUM, protocol_header.sn);
-            return;
+            // TODO: just for easy debug to disable the checksum checking
+            //SendErrorAck(ERROR_CHECKSUM, protocol_header.sn);
+            //return;
         }
 				
         switch(protocol_header.cmd)
         {
-            case CMD_GET_MCU_INFO: 
-                printf("CMD_GET_MCU_INFO\n");
+            case CMD_GET_MCU_INFO:
+                //printf("CMD_GET_MCU_INFO\n");
+                SendGetMcuInfoAck(protocol_header.sn);
                 break;
-            case CMD_SEND_MCU_P0: 
+            case CMD_SEND_HEARTBEAT:
+                //printf("CMD_SEND_HEARTBEAT\n");
+                SendHeartbeatAck(protocol_header.sn);
+                break;
+            case CMD_REPORT_MODULE_STATUS:
+                //printf("CMD_REPORT_MODULE_STATUS\n");
+                SendReportModuleStatusAck(protocol_header.sn);
+                HandleModuleStatus(uart_buf[8] * 256 + uart_buf[9]);
+                break;
+            case CMD_REBOOT_MCU:
+                //printf("CMD_REBOOT_MCU\n");
+                SendRebootMcuAck(protocol_header.sn);
+                HandleRebootMcu();
+                break;
+            case CMD_SEND_MCU_P0:
                 printf("CMD_SEND_MCU_P0\n");
                 break;
-            case CMD_SEND_HEARTBEAT: 
-                printf("CMD_SEND_HEARTBEAT\n");
-                break;
-            case CMD_REPORT_MODULE_STATUS: 
-                printf("CMD_REPORT_MODULE_STATUS\n");
-                break;
-            case CMD_REBOOT_MCU: 
-                printf("CMD_REBOOT_MCU\n");
-                break;
-            case CMD_MCU_CMD_ERROR_ACK: 
-                printf("CMD_MCU_CMD_ERROR_ACK\n");
-                break;
             default:
+                //printf("CMD_UNIDENTIFIED\n");
+                SendErrorAck(ERROR_CMD, protocol_header.sn);
                 break;
         }
     }

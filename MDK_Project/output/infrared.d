@@ -3,6 +3,7 @@
 .\output\infrared.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\infrared.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\infrared.o: ..\User\Buz_Logic\protocol.h
+.\output\infrared.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\output\infrared.o: ..\User\Hal_Driver\hal_uart.h
 .\output\infrared.o: ..\Lib\cmsis\stm32f10x.h
 .\output\infrared.o: ..\Lib\cmsis\core_cm3.h

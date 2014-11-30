@@ -33,10 +33,10 @@ extern uint32_t   main_counter;
 extern uint16_t   key_return;
 
 // uart vars
-extern uint8_t    uart_buf[2048]; 
-extern uint16_t   uart_buf_index; 
-extern uint8_t    uart_msg_len; 
-extern uint8_t    uart_got_one_msg; 
+extern uint8_t    uart_buf[2048];
+extern uint16_t   uart_buf_index;
+extern uint8_t    uart_msg_len;
+extern uint8_t    uart_got_one_msg;
 
 /** @addtogroup Template_Project
  * @{
@@ -182,7 +182,7 @@ void USART1_IRQHandler(void)
                 }
                 else if(uart_buf_index >= 3 && uart_buf[uart_buf_index-1] == 0xff && uart_buf[uart_buf_index] == 0xff)
                 {
-                    // if received 0xffff, it is the header(the very first two bytes)
+                    // if received 0xffff, it is the header(the very first two bytes), ignore the received bytes
                     uart_buf_index = 2;
                 }
                 else
