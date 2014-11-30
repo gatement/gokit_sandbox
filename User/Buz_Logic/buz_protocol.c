@@ -60,18 +60,39 @@ void HandleControl(uint8_t *buf)
 {
     memcpy(&m_protocol_write, buf, sizeof(protocol_write_t));
     
-    // control
-    if(m_protocol_write.power)
+    // control and save current value
+    if(m_protocol_write.flags & 0x01)
     {
-        LED_RGB_Control(100, 0, 0);
-    }
-    else
-    {
-        LED_RGB_Control(0, 0, 0);
+        m_protocol_mcu_status_current.power = m_protocol_write.power;
+        if(m_protocol_write.power)
+        {
+            LED_RGB_Control(100, 0, 0);
+        }
+        else
+        {
+            LED_RGB_Control(0, 0, 0);
+        }
     }
 
-    // update m_protocol_mcu_status_current
-    m_protocol_mcu_status_current.power = m_protocol_write.power;
+    if(m_protocol_write.flags & 0x02)
+    {
+        m_protocol_mcu_status_current.motor = m_protocol_write.motor;
+        switch(m_protocol_write.motor)
+        {
+            case 0:
+                Motor_Control(0, 0);
+                break;
+            case 1:
+                Motor_Control(1, 0);
+                break;
+            case 2:
+                Motor_Control(2, 0);
+                break;
+            default:
+                Motor_Control(0, 0);
+                break;
+        }
+    }
 
     // send ack
     m_protocol_write_ack.header.sn = m_protocol_write.header.sn;
@@ -112,7 +133,7 @@ void CheckStatus()
     
     diff = 0;
     if(check_status_time < 200) return;
-        
+     
     check_status_time = 0;
     index_new = (uint8_t *)&(m_protocol_mcu_status_current);
     index_old = (uint8_t *)&(m_protocol_mcu_status_last);

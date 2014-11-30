@@ -29,6 +29,7 @@ __packed struct _protocol_write_t
     uint8_t                         sub_cmd;
     uint8_t                         flags;
     uint8_t                         power;
+    uint8_t                         motor;
     uint8_t                         sum;    
 };
 
@@ -50,6 +51,7 @@ __packed struct _protocol_mcu_status_t
     protocol_header_t               header;
     uint8_t                         sub_cmd;
     uint8_t                         power;
+    uint8_t                         motor;
     uint8_t                         sum;    
 };
 
