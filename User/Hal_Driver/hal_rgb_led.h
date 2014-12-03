@@ -15,6 +15,6 @@
 #define SDA_HIGH	GPIO_SetBits(GPIOB,GPIO_Pin_7)
 
 void RGB_LED_Init(void);
-void LED_RGB_Control(uint8_t R, uint8_t B, uint8_t G);
+void LED_RGB_Control(uint8_t R, uint8_t G, uint8_t B);
 
 #endif /*_HAL_RGB_LED_H*/
