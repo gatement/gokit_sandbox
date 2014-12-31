@@ -28,9 +28,8 @@ __packed struct _protocol_write_t
     protocol_header_t               header;
     uint8_t                         sub_cmd;
     uint8_t                         flags;
-    uint8_t                         power;
-    uint8_t                         motor;
-    uint8_t                         sum;    
+    uint8_t                         on_off;
+    uint8_t                         sum; 
 };
 
 __packed struct _protocol_write_ack_t
@@ -50,8 +49,8 @@ __packed struct _protocol_mcu_status_t
 {
     protocol_header_t               header;
     uint8_t                         sub_cmd;
-    uint8_t                         power;
-    uint8_t                         motor;
+    uint8_t                         on_off;
+    uint8_t                         temperature;
     uint8_t                         sum;    
 };
 

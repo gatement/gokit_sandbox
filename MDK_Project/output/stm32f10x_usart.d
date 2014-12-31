@@ -2,7 +2,7 @@
 .\output\stm32f10x_usart.o: ..\Lib\inc\stm32f10x_usart.h
 .\output\stm32f10x_usart.o: ..\Lib\cmsis\stm32f10x.h
 .\output\stm32f10x_usart.o: ..\Lib\cmsis\core_cm3.h
-.\output\stm32f10x_usart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\stm32f10x_usart.o: C:\dev\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\stm32f10x_usart.o: ..\Lib\cmsis\system_stm32f10x.h
 .\output\stm32f10x_usart.o: ..\user\stm32f10x_conf.h
 .\output\stm32f10x_usart.o: ..\Lib\inc\stm32f10x_exti.h

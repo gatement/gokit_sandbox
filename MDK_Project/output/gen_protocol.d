@@ -1,8 +1,8 @@
 .\output\gen_protocol.o: ..\User\Buz_Logic\gen_protocol.c
 .\output\gen_protocol.o: ..\User\Buz_Logic\gen_protocol.h
-.\output\gen_protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\output\gen_protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\output\gen_protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\output\gen_protocol.o: C:\dev\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\output\gen_protocol.o: C:\dev\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\gen_protocol.o: C:\dev\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\output\gen_protocol.o: ..\user\delay.h
 .\output\gen_protocol.o: ..\Lib\cmsis\stm32f10x.h
 .\output\gen_protocol.o: ..\Lib\cmsis\core_cm3.h

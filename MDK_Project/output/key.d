@@ -1,10 +1,10 @@
 .\output\key.o: ..\User\Buz_Logic\key.c
-.\output\key.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\key.o: ..\User\Buz_Logic\key.h
+.\output\key.o: C:\dev\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\key.o: ..\User\Hal_Driver\hal_key.h
 .\output\key.o: ..\Lib\cmsis\stm32f10x.h
 .\output\key.o: ..\Lib\cmsis\core_cm3.h
-.\output\key.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\key.o: C:\dev\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\key.o: ..\Lib\cmsis\system_stm32f10x.h
 .\output\key.o: ..\user\stm32f10x_conf.h
 .\output\key.o: ..\Lib\inc\stm32f10x_exti.h
@@ -16,3 +16,6 @@
 .\output\key.o: ..\Lib\inc\misc.h
 .\output\key.o: ..\User\Hal_Driver\hal_rgb_led.h
 .\output\key.o: ..\user\delay.h
+.\output\key.o: ..\User\Buz_Logic\gen_protocol.h
+.\output\key.o: C:\dev\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\output\key.o: ..\User\Hal_Driver\hal_uart.h

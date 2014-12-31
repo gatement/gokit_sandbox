@@ -45,7 +45,7 @@
 #define     BUZ_PROTOCOL_VER                      "00000002"
 #define     HARD_VER                              "GOKIT001"
 #define     SOFT_VER                              "00000001"
-#define     PRODUCT_KEY                           "c3896f0ac0504db6acea135477efb7db"
+#define     PRODUCT_KEY                           "3859e3b0689f466c9a1968b0da36a5af"
 #define     BINDABLE_TIMEOUT                      60
 
 typedef struct _protocol_header_t                     protocol_header_t;

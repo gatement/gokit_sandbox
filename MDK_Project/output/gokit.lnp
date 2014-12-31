@@ -19,7 +19,7 @@
 ".\output\hal_rgb_led.o"
 ".\output\hal_key.o"
 ".\output\uart.o"
-".\output\key_1.o"
+".\output\key.o"
 ".\output\infrared.o"
 ".\output\buz_protocol.o"
 ".\output\gen_protocol.o"

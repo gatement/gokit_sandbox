@@ -3,7 +3,7 @@
 .\output\buz_protocol.o: ..\user\delay.h
 .\output\buz_protocol.o: ..\Lib\cmsis\stm32f10x.h
 .\output\buz_protocol.o: ..\Lib\cmsis\core_cm3.h
-.\output\buz_protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\buz_protocol.o: C:\dev\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\buz_protocol.o: ..\Lib\cmsis\system_stm32f10x.h
 .\output\buz_protocol.o: ..\user\stm32f10x_conf.h
 .\output\buz_protocol.o: ..\Lib\inc\stm32f10x_exti.h
@@ -15,7 +15,7 @@
 .\output\buz_protocol.o: ..\Lib\inc\misc.h
 .\output\buz_protocol.o: ..\User\Hal_Driver\hal_key.h
 .\output\buz_protocol.o: ..\User\Hal_Driver\hal_rgb_led.h
-.\output\buz_protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\output\buz_protocol.o: C:\dev\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\buz_protocol.o: ..\User\Hal_Driver\hal_motor.h
 .\output\buz_protocol.o: ..\user\sys.h
 .\output\buz_protocol.o: ..\User\Hal_Driver\GPIO\sa_gpio.h
@@ -23,5 +23,5 @@
 .\output\buz_protocol.o: ..\user\sys.h
 .\output\buz_protocol.o: ..\User\Hal_Driver\hal_infrared.h
 .\output\buz_protocol.o: ..\User\Buz_Logic\gen_protocol.h
-.\output\buz_protocol.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\output\buz_protocol.o: C:\dev\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\output\buz_protocol.o: ..\User\Hal_Driver\hal_uart.h

@@ -63,34 +63,14 @@ void HandleControl(uint8_t *buf)
     // control and save current value
     if(m_protocol_write.flags & 0x01)
     {
-        m_protocol_mcu_status_current.power = m_protocol_write.power;
-        if(m_protocol_write.power)
+        m_protocol_mcu_status_current.on_off = m_protocol_write.on_off;
+        if(m_protocol_mcu_status_current.on_off == 1)
         {
-            LED_RGB_Control(100, 0, 0);
+            LED_RGB_Control(0, 10, 0);
         }
         else
         {
             LED_RGB_Control(0, 0, 0);
-        }
-    }
-
-    if(m_protocol_write.flags & 0x02)
-    {
-        m_protocol_mcu_status_current.motor = m_protocol_write.motor;
-        switch(m_protocol_write.motor)
-        {
-            case 0:
-                Motor_Control(0, 0);
-                break;
-            case 1:
-                Motor_Control(1, 0);
-                break;
-            case 2:
-                Motor_Control(2, 0);
-                break;
-            default:
-                Motor_Control(0, 0);
-                break;
         }
     }
 
@@ -146,9 +126,9 @@ void CheckStatus()
             break;
         }
     }
-        
-    // report status every 10 min or status changed
-    if(diff > 0 || report_status_idle_time > 60000)
+     
+    // report status every 10 seconds or status changed
+    if(diff > 0 || report_status_idle_time > 850)
     {
         ReportStatus(REPORT_STATUS, 0);
         report_status_idle_time = 0;
